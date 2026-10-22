@@ -7,7 +7,7 @@ app/
 uploads/complaints/*.*
 !uploads/complaints/.gitkeep
 ftp/legal.md
-package-lock.json
+# package-lock.json suivi volontairement : reproductibilite CI (npm ci) + analyse SCA (Workshop 2, Groupe 8)
 i18n/*.json
 i18n/*.invalid
 !frontend/src/assets/i18n/*.json

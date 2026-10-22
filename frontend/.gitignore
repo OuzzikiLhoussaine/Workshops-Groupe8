@@ -7,7 +7,7 @@
 
 # dependencies
 /node_modules
-package-lock.json
+# package-lock.json suivi volontairement : reproductibilite CI (npm ci) + analyse SCA (Workshop 2, Groupe 8)
 
 # IDEs and editors
 /.idea
