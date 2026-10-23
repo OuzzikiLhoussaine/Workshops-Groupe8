@@ -70,3 +70,6 @@ config/*.yml
 # Misc
 .playwright-mcp/
 cypress/screenshots/
+
+semgrep-results.json
+semgrep-results.sarif
