@@ -60,3 +60,38 @@ jobs:
           path: |
             semgrep-results.json
             semgrep-results.sarif
+
+  sca-dependency-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Restore Dependency-Check database cache
+        id: dc-cache
+        uses: actions/cache@v6
+        with:
+          path: .dc-data
+          key: dependency-check-nvd-${{ github.run_id }}
+          restore-keys: |
+            dependency-check-nvd-
+
+      - name: Run OWASP Dependency-Check
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: |
+          if [ -n "$NVD_API_KEY" ]; then
+            KEYARG="--nvdApiKey $NVD_API_KEY"
+          else
+            KEYARG=""
+          fi
+          docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp -v "$PWD:/src:ro" -v "$PWD/reports:/out" -v "$PWD/.dc-data:/usr/share/dependency-check/data" owasp/dependency-check:latest --project juice-shop-workshop2 --scan /src --out /out --format HTML --format JSON $KEYARG
+
+      - name: Verify report exists
+        run: test -f reports/dependency-check-report.json
+
+      - name: Upload SCA report
+        uses: actions/upload-artifact@v7
+        with:
+          name: dependency-check-report
+          path: reports/
