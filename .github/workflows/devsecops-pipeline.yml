@@ -67,14 +67,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
 
+      - name: Prepare data and report directories
+        run: |
+          mkdir -p reports .dc-data
+          rm -f .dc-data/odc.lock.db
+
       - name: Restore Dependency-Check database cache
         id: dc-cache
-        uses: actions/cache@v6
+        uses: actions/cache/restore@v6
         with:
           path: .dc-data
-          key: dependency-check-nvd-${{ github.run_id }}
+          key: dependency-check-nvd2-${{ github.run_id }}
           restore-keys: |
-            dependency-check-nvd-
+            dependency-check-nvd2-
 
       - name: Run OWASP Dependency-Check
         env:
@@ -89,6 +94,13 @@ jobs:
 
       - name: Verify report exists
         run: test -f reports/dependency-check-report.json
+
+      - name: Save Dependency-Check database cache
+        if: success()
+        uses: actions/cache/save@v6
+        with:
+          path: .dc-data
+          key: dependency-check-nvd2-${{ github.run_id }}
 
       - name: Upload SCA report
         uses: actions/upload-artifact@v7
