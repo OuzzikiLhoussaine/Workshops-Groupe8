@@ -73,3 +73,6 @@ cypress/screenshots/
 
 semgrep-results.json
 semgrep-results.sarif
+reports/
+.dc-data/
+npm-audit.json
