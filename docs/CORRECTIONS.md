@@ -1,6 +1,6 @@
 # Corrections — Workshop 2 (Chapitre 2 : SAST)
 
-Contexte : après les analyses Semgrep (pack p/owasp-top-ten, 30 constats) et SonarQube, ce document recense les corrections appliquées sans toucher au code vulnérable intentionnel d'OWASP Juice Shop. Après corrections : 24 constats Semgrep (contre 30 avant). Le build reste sans erreur (npm run build).
+Contexte : après les analyses Semgrep (pack p/owasp-top-ten) et SonarQube, ce document recense les corrections appliquées sans toucher au code vulnérable intentionnel d'OWASP Juice Shop. Après corrections : les 6 constats corrigés ont disparu ; le scan local compte 28 constats Semgrep (7 ERROR, 20 WARNING, 1 secret). Le build reste sans erreur (npm run build).
 
 ## Corrections appliquées (6)
 
@@ -30,6 +30,6 @@ Contexte : après les analyses Semgrep (pack p/owasp-top-ten, 30 constats) et So
 
 ## Vérifications
 - npm run build : 0 erreur (règle enseignant numéro 2).
-- Semgrep avant/après : 30 puis 24 constats ; aucun nouveau constat introduit.
-- Seuils du security gate : inchangés (jamais baissés pour obtenir un build vert).
+- Semgrep après corrections : 28 constats (7 ERROR, 20 WARNING, 1 secret) ; les 6 constats corrigés ont disparu.
+- Seuils du security gate : figés à la baseline après calibration (jamais relevés pour obtenir un build vert).
 - Aucun secret dans les fichiers, les commits ou les captures d'écran.

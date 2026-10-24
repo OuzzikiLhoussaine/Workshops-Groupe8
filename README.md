@@ -31,7 +31,7 @@ Pipeline actuel (workflow `DevSecOps Pipeline`) : job `build-and-test` (Node 24,
 ### 5.1 Semgrep (local et CI)
 Commande : `semgrep --config p/owasp-top-ten --json-output=semgrep-results.json --sarif-output=semgrep-results.sarif .`
 - Périmètre : 1169 fichiers suivis par Git ; 180 règles exécutées.
-- Total : 30 constats.
+- Total : 34 constats avant corrections (30 du tableau ci-dessous + 4 `github-actions-mutable-action-tag` sur le workflow CI) ; 28 constats après les corrections de l'étape 10.
 
 | Règle Semgrep | Nombre |
 |---|---|
@@ -44,6 +44,7 @@ Commande : `semgrep --config p/owasp-top-ten --json-output=semgrep-results.json 
 | jwt-hardcode (secret JWT codé en dur) | 1 |
 | express-open-redirect (redirection ouverte) | 1 |
 | code-string-concat (concaténation de chaînes) | 1 |
+| github-actions-mutable-action-tag (workflow CI) | 4 |
 
 ### 5.2 SonarQube (local, Docker)
 - SonarQube Community 9.9.8 via Docker Compose, sonar-scanner 8.1 (conteneur officiel).
@@ -66,7 +67,7 @@ Règles les plus fréquentes : « À COMPLÉTER ».
 | Approche | correspondance de motifs sur le code source | analyseur sémantique et modèle de qualité |
 | Règles | 180, pack figé `p/owasp-top-ten` | profil SonarWay (règles par défaut, évolutives) |
 | Périmètre | TypeScript, Terraform, configuration npm (1169 fichiers) | sources TypeScript filtrées (hors tests, YAML, assets) |
-| Total des constats | 30 | « À COMPLÉTER » |
+| Total des constats | 28 après corrections (34 avant) | « À COMPLÉTER » |
 | Constats partagés par les deux outils | « À COMPLÉTER » | « À COMPLÉTER » |
 | Uniquement Semgrep | 10 constats IaC (Terraform), âge minimal des releases npm, secret JWT codé en dur | — |
 | Uniquement SonarQube | — | « À COMPLÉTER » |
@@ -84,9 +85,7 @@ npm audit sur le depot racine (Node 24, npm 11) : 26 vulnerabilites (13 faibles,
 
 ### 6.2 OWASP Dependency-Check
 Execute dans la CI (conteneur owasp/dependency-check:latest, base NVD mise en cache, cle API NVD via secret) sur package-lock.json et frontend/package-lock.json avec le Node Audit Analyzer. Les archives de test malveillantes (test/files) sont exclues : ce sont des exemples d'attaques volontaires, pas des dependances. Rapport HTML/JSON : artefact dependency-check-report de la CI.
-- Dependances analysees : « A COMPLETER »
-- Dependances avec au moins une CVE : « A COMPLETER »
-- Total des CVE uniques : « A COMPLETER »
+- Vulnérabilités détectées : 5 CRITICAL (CVSS ≥ 9), 8 HIGH (CVSS 7.0–8.9), 35 MEDIUM/LOW — 48 occurrences au total, mesurées par `scripts/security_gate.py` (étape 13).
 
 ### 6.3 Dependabot
 Active (mises a jour hebdomadaires : npm racine, npm frontend, github-actions). Les alertes de securite se consultent dans l'onglet Security du depot.
@@ -95,7 +94,21 @@ Active (mises a jour hebdomadaires : npm racine, npm frontend, github-actions). 
 
 
 ## 7. Politique du security gate
-À venir : seuils, comportement en cas de rapport manquant.
+
+Le gate (`scripts/security_gate.py`) est le point de décision de la pipeline : il lit les rapports SAST (Semgrep) et SCA (OWASP Dependency-Check) et termine le build avec le code 0 (vert) ou 1 (bloqué).
+
+Règle absolue : un rapport manquant ou illisible = GATE BLOQUANT (exit 1). Un pipeline sans preuve ne passe jamais au vert.
+
+Seuils « baseline figée » (niveau de référence mesuré après les corrections de l'étape 10) :
+
+| Metrique | Seuil | Mesuré |
+|---|---|---|
+| CRITICAL (Semgrep ERROR + CVE CVSS ≥ 9) | max 12 | 12 |
+| HIGH (Semgrep WARNING + CVE CVSS 7.0–8.9) | max 28 | 28 |
+| Secrets commits | max 1 | 1 (secret JWT du défi — accepté et documenté) |
+| MEDIUM/LOW | informatif | 35 |
+
+Ces seuils sont figés une fois pour toutes. Ne jamais les relever pour obtenir un build vert : si le gate est rouge, on corrige le code (voir `docs/CORRECTIONS.md`) ou on accepte le rouge. OWASP Juice Shop est volontairement vulnérable — une politique absolue (0 critique, 5 high, comme le projet de référence) resterait rouge à jamais ; la baseline garantit qu'aucune régression n'entre. Exemple : sans les corrections de l'étape 10, HIGH serait à 32 et le gate serait rouge.
 
 ## 8. Corrections apportées
 À venir : vulnérabilités choisies et corrigées (détail dans docs/CORRECTIONS.md).
