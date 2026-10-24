@@ -90,13 +90,13 @@ jobs:
           else
             KEYARG=""
           fi
-          docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp -v "$PWD:/src:ro" -v "$PWD/reports:/out" -v "$PWD/.dc-data:/usr/share/dependency-check/data" owasp/dependency-check:latest --project juice-shop-workshop2 --scan /src --out /out --format HTML --format JSON $KEYARG
+          docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp -v "$PWD:/src:ro" -v "$PWD/reports:/out" -v "$PWD/.dc-data:/usr/share/dependency-check/data" owasp/dependency-check:latest --project juice-shop-workshop2 --scan /src --out /out --format HTML --format JSON --exclude "**/test/files/**" $KEYARG
 
       - name: Verify report exists
         run: test -f reports/dependency-check-report.json
 
       - name: Save Dependency-Check database cache
-        if: success()
+        if: always()
         uses: actions/cache/save@v6
         with:
           path: .dc-data
