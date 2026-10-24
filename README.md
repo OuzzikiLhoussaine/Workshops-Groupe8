@@ -77,8 +77,22 @@ Règles les plus fréquentes : « À COMPLÉTER ».
 3. Règles maintenues indépendamment : les packs Semgrep et les profils SonarWay évoluent séparément ; les comptes ne seront donc jamais identiques.
 4. Complémentarité : aucun outil ne couvre tout. La bonne pratique DevSecOps est d'additionner les résultats, puis de les arbitrer dans l'étape des corrections, plutôt que de choisir un seul outil.
 
-## 6. Chapitre 3 — Résultats SCA
-À venir : npm audit, OWASP Dependency-Check, Dependabot.
+## 6. Chapitre 3 — Resultats SCA (logiciels tiers)
+
+### 6.1 npm audit
+npm audit sur le depot racine (Node 24, npm 11) : 26 vulnerabilites (13 faibles, 3 moderees, 10 elevees) dans les dependances d'origine. npm audit fix n'a volontairement pas ete applique pour preserver le comportement du projet.
+
+### 6.2 OWASP Dependency-Check
+Execute dans la CI (conteneur owasp/dependency-check:latest, base NVD mise en cache, cle API NVD via secret) sur package-lock.json et frontend/package-lock.json avec le Node Audit Analyzer. Les archives de test malveillantes (test/files) sont exclues : ce sont des exemples d'attaques volontaires, pas des dependances. Rapport HTML/JSON : artefact dependency-check-report de la CI.
+- Dependances analysees : « A COMPLETER »
+- Dependances avec au moins une CVE : « A COMPLETER »
+- Total des CVE uniques : « A COMPLETER »
+
+### 6.3 Dependabot
+Active (mises a jour hebdomadaires : npm racine, npm frontend, github-actions). Les alertes de securite se consultent dans l'onglet Security du depot.
+- Alertes Dependabot : « A COMPLETER »
+- Politique : les pull requests de mise a jour de dependances restent ouvertes comme preuve, mais ne sont jamais fusionnees ; elles corrigeraient les vulnerabilites volontaires du projet cible et fausseraient les resultats SCA.
+
 
 ## 7. Politique du security gate
 À venir : seuils, comportement en cas de rapport manquant.
