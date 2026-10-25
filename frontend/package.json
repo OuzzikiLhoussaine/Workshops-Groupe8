@@ -78,7 +78,7 @@
     "eslint": "^9.33.0",
     "jsdom": "^29.0.1",
     "stylelint": "^16.10.0",
-    "stylelint-config-sass-guidelines": "^12.1.0",
+    "stylelint-config-sass-guidelines": "^13.0.0",
     "stylelint-scss": "^6.0.0",
     "typescript-eslint": "^8.42.0",
     "vitest": "^4.1.1"
