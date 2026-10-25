@@ -66,11 +66,11 @@ SonarQube Community 9.9.8 (Docker Compose) + sonar-scanner 8.1, projet `juice-sh
 
 | Mesure | Valeur |
 |---|---|
-| Lignes de code (ncloc) | « À COMPLÉTER » |
-| Bugs | « À COMPLÉTER » |
-| Vulnérabilités | « À COMPLÉTER » |
-| Code Smells | « À COMPLÉTER » |
-| Security Hotspots | « À COMPLÉTER » |
+| Lignes de code (ncloc) | 32588 |
+| Bugs | 35 |
+| Vulnérabilités | 0 |
+| Code Smells | 3274 |
+| Security Hotspots | 21 |
 
 ### 5.3 Comparaison des deux outils
 | Critère | Semgrep | SonarQube |
@@ -78,7 +78,7 @@ SonarQube Community 9.9.8 (Docker Compose) + sonar-scanner 8.1, projet `juice-sh
 | Approche | correspondance de motifs (règles OWASP) | analyseur sémantique et modèle de qualité |
 | Règles | pack figé `p/owasp-top-ten` (180 règles) | profil SonarWay (par défaut) |
 | Périmètre | TypeScript, Terraform, configuration npm | sources TypeScript filtrées |
-| Total des constats | 27 | « À COMPLÉTER » |
+| Total des constats | 27 | 3330 |
 | Points forts | rapide, règles OWASP, secrets, IaC | qualité + sécurité, dashboard, hotspots |
 | Limites | faux positifs, pas d'analyse de flux | peu de règles de vulnérabilité en édition Community |
 
@@ -100,7 +100,7 @@ Exécuté sur les deux lockfiles avec le Node Audit Analyzer ; base NVD mise en 
 
 ### 6.3 Dependabot
 Activé pour npm (racine et frontend) et github-actions, mises à jour hebdomadaires.
-- Alertes de sécurité (onglet Security) : « À COMPLÉTER »
+- Alertes de sécurité (onglet Security) : 69 alertes ouvertes
 - Politique : les pull requests de mise à jour restent ouvertes comme preuve mais ne sont jamais fusionnées ; elles corrigeraient les vulnérabilités volontaires du projet et fausseraient les résultats SCA (voir l'incident #10/#11 de la section 3).
 
 ## 7. Politique du security gate
