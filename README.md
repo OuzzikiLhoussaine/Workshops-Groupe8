@@ -6,9 +6,9 @@ Mettre en place une chaîne DevSecOps sur une application volontairement vulnér
 ## 2. Équipe et rôles
 | Personne | Rôle |
 |---|---|
-| OuzzikiLhoussaine (responsable du dépôt) | Rôle A (Semgrep, SonarQube) + Rôle B (Dependency-Check, Dependabot) + Rôle C (pipeline, security gate, rapport) |
-| ZinebHajaj | Collaboratrice : revue des pull requests |
-| HasnaEL10 | Collaboratrice : revue des pull requests |
+| Ouzziki Lhoussaine | Rôle A (Semgrep, SonarQube) + Rôle B (Dependency-Check, Dependabot) + Rôle C (pipeline, security gate, rapport) |
+| Zineb Hajaj | Collaboratrice : revue des pull requests |
+| Hasna Elhassani | Collaboratrice : revue des pull requests |
 
 Pour ce workshop, les trois rôles ont été tenus par le responsable ; les deux collaboratrices restent relectrices et pourront prendre des rôles au workshop 3.
 
