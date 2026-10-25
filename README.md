@@ -1,6 +1,6 @@
 # Workshop 2 — Analyse SAST avec SonarQube et Semgrep
 
-**OWASP Juice Shop — Groupe 8.** Équipe : Ouzziki Lhoussaine (rôles A, B et C), Zineb Hajaj et Hasna Elhassani (revue des pull requests).
+**OWASP Juice Shop — Groupe 8.** Équipe : Ouzziki Lhoussaine, Zineb Hajaj et Hasna Elhassani .
 
 > Ce rapport correspond à la carte « Analyse SAST avec SonarQube et Semgrep ». La partie SCA (Dependabot et OWASP Dependency-Check) est traitée sur la branche `workshop3`. Le rapport complet des deux parties se trouve sur la branche par défaut `workshop-2-sast-sca`.
 
