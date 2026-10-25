@@ -122,14 +122,42 @@ Le gate (`scripts/security_gate.py`) lit les rapports SAST et SCA et termine le 
 Détail complet dans `docs/CORRECTIONS.md` : sous-réseaux AWS sans IP publique, écouteur de load balancer en HTTP (redirection 301 vers HTTPS), délai minimal npm (`min-release-age = 7`), épinglage des actions GitHub aux empreintes SHA, annulation des fusions Dependabot accidentelles, hygiène des lockfiles.
 
 ## 9. Captures d'écran
-| Fichier | Contenu |
-|---|---|
-| `docs/screenshots/01-pipeline-ensemble.png` | les 4 jobs du pipeline, tous verts |
-| `docs/screenshots/02-build-tests.png` | job `build-and-test` : compilation sans erreur |
-| `docs/screenshots/03-semgrep-findings.png` | constats Semgrep dans la CI |
-| `docs/screenshots/04-dependency-check-cve.png` | CVE (GHSA/CVSS) du rapport Dependency-Check |
-| `docs/screenshots/05-gate-fail.png` | security gate bloquant (GATE BLOQUANT) |
-| `docs/screenshots/06-gate-pass.png` | security gate vert après corrections (GATE PASSE) |
-| `docs/screenshots/07-sonarqube-dashboard.png` | tableau de bord SonarQube |
-| `docs/screenshots/08-dependabot-alerte.png` | alertes Dependabot (onglet Security) |
-| `docs/screenshots/09-rapport-dependency-check.png` | vue d'ensemble du rapport Dependency-Check |
+
+Les 9 preuves de l'atelier, versionnees dans `docs/screenshots/` et affichees ci-dessous.
+
+### 01 — les 4 jobs du pipeline, tous verts
+
+<img src="docs/screenshots/01-pipeline-ensemble.png" alt="les 4 jobs du pipeline, tous verts" width="800">
+
+### 02 — job build-and-test : compilation sans erreur
+
+<img src="docs/screenshots/02-build-tests.png" alt="job build-and-test : compilation sans erreur" width="800">
+
+### 03 — constats Semgrep dans la CI
+
+<img src="docs/screenshots/03-semgrep-findings.png" alt="constats Semgrep dans la CI" width="800">
+
+### 04 — CVE (GHSA/CVSS) du rapport Dependency-Check
+
+<img src="docs/screenshots/04-dependency-check-cve.png" alt="CVE (GHSA/CVSS) du rapport Dependency-Check" width="800">
+
+### 05 — security gate bloquant (GATE BLOQUANT)
+
+<img src="docs/screenshots/05-gate-fail.png" alt="security gate bloquant (GATE BLOQUANT)" width="800">
+
+### 06 — security gate vert apres corrections (GATE PASSE)
+
+<img src="docs/screenshots/06-gate-pass.png" alt="security gate vert apres corrections (GATE PASSE)" width="800">
+
+### 07 — tableau de bord SonarQube
+
+<img src="docs/screenshots/07-sonarqube-dashboard.png" alt="tableau de bord SonarQube" width="800">
+
+### 08 — alertes Dependabot (onglet Security)
+
+<img src="docs/screenshots/08-dependabot-alerte.png" alt="alertes Dependabot (onglet Security)" width="800">
+
+### 09 — vue d'ensemble du rapport Dependency-Check
+
+<img src="docs/screenshots/09-rapport-dependency-check.png" alt="vue d'ensemble du rapport Dependency-Check" width="800">
+
