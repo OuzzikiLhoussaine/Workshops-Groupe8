@@ -1,6 +1,6 @@
 # Workshop 3 — Dependabot et OWASP Dependency-Check
 
-**OWASP Juice Shop — Groupe 8.** Équipe : Ouzziki Lhoussaine (rôles A, B et C), Zineb Hajaj et Hasna Elhassani (revue des pull requests).
+**OWASP Juice Shop — Groupe 8.** Réalisé par Ouzziki Lhoussaine (rôles A, B et C).
 
 > Ce rapport correspond à la carte « Dependabot et OWASP Dependency-Check ». La partie SAST (SonarQube et Semgrep) est traitée sur la branche `workshop2`. Le rapport complet des deux parties se trouve sur la branche par défaut `workshop-2-sast-sca`.
 
@@ -8,13 +8,15 @@
 
 Sécuriser les dépendances d'un projet : configurer Dependabot pour générer automatiquement des pull requests de mise à jour, utiliser OWASP Dependency-Check pour détecter les vulnérabilités des bibliothèques, intégrer le tout dans un pipeline CI/CD, et corriger efficacement les vulnérabilités détectées dans la mesure du possible.
 
-## 2. Équipe et rôles
+## 2. Rôles
 
-| Personne | Rôle |
+Ce workshop a été réalisé en entier par Ouzziki Lhoussaine, qui a tenu les trois rôles :
+
+| Rôle | Contenu |
 |---|---|
-| Ouzziki Lhoussaine | Rôle A (Semgrep, SonarQube) + Rôle B (Dependency-Check, Dependabot) + Rôle C (pipeline, security gate, rapport) |
-| Zineb Hajaj | Collaboratrice : revue des pull requests |
-| Hasna Elhassani | Collaboratrice : revue des pull requests |
+| Rôle A | Analyse SAST : Semgrep et SonarQube |
+| Rôle B | Analyse SCA : OWASP Dependency-Check et Dependabot |
+| Rôle C | Pipeline CI, security gate et rapport |
 
 ## 3. Pipeline CI/CD
 
