@@ -1,6 +1,6 @@
 # Workshop 3 — Dependabot et OWASP Dependency-Check
 
-**OWASP Juice Shop — Groupe 8.** Réalisé par Ouzziki Lhoussaine (rôles A, B et C).
+**OWASP Juice Shop — Groupe 8.** Réalisé par Ouzziki Lhoussaine.
 
 > Ce rapport correspond à la carte « Dependabot et OWASP Dependency-Check ». La partie SAST (SonarQube et Semgrep) est traitée sur la branche `workshop2`. Le rapport complet des deux parties se trouve sur la branche par défaut `workshop-2-sast-sca`.
 
