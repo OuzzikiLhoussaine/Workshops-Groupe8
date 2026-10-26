@@ -1,6 +1,6 @@
 # Workshop 2 — Analyse SAST avec SonarQube et Semgrep
 
-**OWASP Juice Shop — Groupe 8.** Équipe : Ouzziki Lhoussaine, Zineb Hajaj et Hasna Elhassani .
+**OWASP Juice Shop — Groupe 8.** Réalisé par Ouzziki Lhoussaine (rôles A, B et C).
 
 > Ce rapport correspond à la carte « Analyse SAST avec SonarQube et Semgrep ». La partie SCA (Dependabot et OWASP Dependency-Check) est traitée sur la branche `workshop3`. Le rapport complet des deux parties se trouve sur la branche par défaut `workshop-2-sast-sca`.
 
@@ -8,13 +8,15 @@
 
 Travailler sur un projet contenant des vulnérabilités intentionnelles (injections, XSS, mauvaises pratiques) : configurer une analyse SAST avec SonarQube via Docker, l'intégrer dans un pipeline CI, utiliser Semgrep pour détecter des motifs de sécurité plus fins, comparer les résultats des deux outils, et corriger les vulnérabilités trouvées dans la mesure du possible.
 
-## 2. Équipe et rôles
+## 2. Rôles
 
-| Personne | Rôle |
+Ce workshop a été réalisé en entier par Ouzziki Lhoussaine, qui a tenu les trois rôles :
+
+| Rôle | Contenu |
 |---|---|
-| Ouzziki Lhoussaine | Rôle A (Semgrep, SonarQube) + Rôle B (Dependency-Check, Dependabot) + Rôle C (pipeline, security gate, rapport) |
-| Zineb Hajaj | Collaboratrice : revue des pull requests |
-| Hasna Elhassani | Collaboratrice : revue des pull requests |
+| Rôle A | Analyse SAST : Semgrep et SonarQube |
+| Rôle B | Analyse SCA : OWASP Dependency-Check et Dependabot |
+| Rôle C | Pipeline CI, security gate et rapport |
 
 ## 3. Pipeline CI
 
